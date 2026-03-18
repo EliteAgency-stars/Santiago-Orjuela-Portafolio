@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santiago Orjuela | Marketing Digital &amp; High Ticket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --red-accent: #c8102e;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
+        }
+        
+        .logo-grid img {
+            filter: grayscale(100%) brightness(1.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .logo-grid img:hover {
+            filter: grayscale(0%) brightness(1.1);
+            transform: scale(1.08);
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #c8102e;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, #c8102e, transparent);
+            bottom: -8px;
+            left: 20%;
+        }
+    </style>
+</head>
+<body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-lg border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">IO</div>
+                <div>
+                    <span class="text-2xl font-bold tracking-tighter">SANTIAGO</span>
+                    <span class="text-2xl font-light tracking-tighter text-zinc-400">ORJUELA</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#sobre" class="nav-link">SOBRE MÍ</a>
+                <a href="#servicios" class="nav-link">SERVICIOS</a>
+                <a href="#marcas" class="nav-link">MARCAS</a>
+                <a href="#resultados" class="nav-link">RESULTADOS</a>
+                <a href="#vision" class="nav-link">VISIÓN</a>
+                <a href="#contacto" class="nav-link">CONTACTO</a>
+            </div>
+            
+            <a href="https://wa.me/573125456301" target="_blank"
+               class="bg-red-600 hover:bg-red-700 transition-colors px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2">
+                <i class="fab fa-whatsapp"></i>
+                WHATSAPP
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left content -->
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-zinc-900 border border-red-900 px-5 py-2 rounded-full text-red-400 text-xs font-medium tracking-widest">
+                    <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    89% DE ÉXITO EN COLABORACIONES
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tighter">
+                    SANTIAGO<br>ORJUELA
+                </h1>
+                
+                <div class="text-3xl font-light text-zinc-400">
+                    Experto en <span class="text-red-400">Marketing Digital</span><br>
+                    Estratega High Ticket • Creador de Contenido
+                </div>
+                
+                <p class="max-w-md text-lg text-zinc-300">
+                    Idea en 5 minutos → Propuesta digital completa, escalable y lista para ejecutar.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://wa.me/573125456301" target="_blank"
+                       class="bg-white text-black hover:bg-zinc-200 transition-colors px-8 py-4 rounded-2xl font-semibold flex items-center gap-3 text-lg">
+                        <i class="fab fa-whatsapp text-green-500"></i>
+                        HABLEMOS AHORA
+                    </a>
+                    
+                    <a href="#resultados" 
+                       class="border border-zinc-600 hover:border-red-600 transition-colors px-8 py-4 rounded-2xl font-medium flex items-center gap-2">
+                        VER RESULTADOS →
+                    </a>
+                </div>
+                
+                <div class="pt-8 border-t border-zinc-800 flex items-center gap-8 text-sm">
+                    <div>
+                        <div class="text-red-400 font-mono text-4xl">259%</div>
+                        <div class="text-zinc-400 text-xs tracking-widest">CRECIMIENTO ORGÁNICO EN 2 SEMANAS</div>
+                    </div>
+                    <div class="h-8 w-px bg-zinc-700"></div>
+                    <div>
+                        <div class="text-red-400 font-mono text-4xl">26%</div>
+                        <div class="text-zinc-400 text-xs tracking-widest">CLIENTES QUE VUELVEN</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right visual -->
+            <div class="relative flex justify-center">
+                <div class="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-red-900/30 to-transparent rounded-[4rem] rotate-12 flex items-center justify-center shadow-2xl">
+                    <div class="text-center -rotate-12">
+                        <div class="w-40 h-40 mx-auto bg-zinc-900 rounded-3xl flex items-center justify-center shadow-inner border border-red-900">
+                            <div class="text-8xl font-black text-red-600/80">IO</div>
+                        </div>
+                        <div class="mt-6 text-xs tracking-[6px] text-zinc-500">INCOGNITXX</div>
+                    </div>
+                </div>
+                
+                <!-- Floating badge -->
+                <div class="absolute -top-8 -right-8 bg-black border border-red-600 px-6 py-3 rounded-3xl shadow-xl">
+                    <div class="flex items-center gap-2 text-sm">
+                        <i class="fas fa-crown text-amber-400"></i>
+                        <span class="font-semibold">High Ticket Expert</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center gap-2 text-xs text-zinc-500">
+            <div>SCROLL PARA DESCUBRIR</div>
+            <div class="w-px h-12 bg-gradient-to-b from-transparent via-zinc-400 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <img src="https://picsum.photos/id/1015/800/900" 
+                         alt="Santiago Orjuela" 
+                         class="w-full rounded-3xl shadow-2xl border border-zinc-700">
+                </div>
+                
+                <div class="md:col-span-7 space-y-8">
+                    <div class="section-header">
+                        <span class="text-red-400 text-sm font-medium tracking-widest">INCÓGNITA RESUELTA</span>
+                    </div>
+                    
+                    <h2 class="text-5xl font-semibold leading-none">
+                        Hola, soy Santiago Orjuela.<br>
+                        <span class="text-zinc-400">Incognitxx en Twitch • Estratega de alto impacto.</span>
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none text-lg text-zinc-300">
+                        <p>Con más de 5 años creando contenido que genera millones de vistas, hoy ayudo a marcas y emprendedores a convertir ideas en resultados reales.</p>
+                        <p>89% de acierto en estrategias para marcas como Pony, Postobón, Ramo, Yupi, Corferias y muchas más. Manejo Meta Ads, Google Ads, TikTok Ads, IA aplicada al marketing, diseño gráfico, creación de páginas web y respaldo legal de marca.</p>
+                        <p><strong>“Las redes son una empresa. Si entiendes su mundo, ganan todos.”</strong></p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="text-5xl font-light text-red-400">90M</div>
+                            <div class="text-xs leading-none">REPRODUCCIONES<br>EN TIKTOK AL MES</div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="text-5xl font-light text-red-400">77K</div>
+                            <div class="text-xs leading-none">SEGUIDORES<br>EN TWITCH</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contacto" 
+                       class="inline-flex items-center gap-3 text-red-400 hover:text-red-300 transition-colors font-medium">
+                        CONÓCEME MÁS →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-1 bg-red-900/30 text-red-400 text-xs font-medium rounded-full">EXPERTO EN TODO EL FUNNEL</span>
+                <h2 class="text-5xl font-semibold mt-4">Servicios que convierten</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group bg-zinc-900 hover:bg-zinc-800 border border-transparent hover:border-red-600 transition-all rounded-3xl p-8">
+                    <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl mb-6 text-3xl">📈</div>
+                    <h3 class="text-2xl font-semibold mb-3">Meta Ads + Google + TikTok Ads</h3>
+                    <p class="text-zinc-400">Investigación de mercado + campañas que generan clientes. Promedio 26% de retorno.</p>
+                    <div class="mt-8 text-xs text-red-400 font-medium">+259% crecimiento orgánico en 2 semanas</div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="group bg-zinc-900 hover:bg-zinc-800 border border-transparent hover:border-red-600 transition-all rounded-3xl p-8">
+                    <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl mb-6 text-3xl">🌐</div>
+                    <h3 class="text-2xl font-semibold mb-3">Creación de Páginas Web + IA</h3>
+                    <p class="text-zinc-400">Sitios profesionales, escalables y optimizados para conversión. Idea hoy, web en 48h.</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="group bg-zinc-900 hover:bg-zinc-800 border border-transparent hover:border-red-600 transition-all rounded-3xl p-8">
+                    <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl mb-6 text-3xl">🔍</div>
+                    <h3 class="text-2xl font-semibold mb-3">Diseño Gráfico + Legislación de Marca</h3>
+                    <p class="text-zinc-400">Identidad visual + respaldo legal completo. Tu idea protegida y lista para escalar.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center text-sm text-zinc-400 max-w-md mx-auto">
+                Salud • Educación • Ventas • Servicios • Productos • Eventos • Tecnología • y más sectores.
+            </div>
+        </div>
+    </section>
+
+    <!-- MARCAS -->
+    <section id="marcas" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-semibold">Marcas que ya confiaron</h2>
+                <p class="text-zinc-400 mt-2">Colaboraciones reales con resultados reales</p>
+            </div>
+            
+            <div class="logo-grid grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-8 items-center justify-items-center">
+                <img src="https://placehold.co/180x80/111/fff?text=PONY" alt="Pony" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=POSTOBÓN" alt="Postobón" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=STREAM+RIDERS" alt="Stream Riders" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=THE+WOW" alt="The Wow" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=SOFA" alt="Sofa" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=SERFIN" alt="Serfin" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=ETB" alt="ETB" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=PULLMAN" alt="Pullman" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=YUPI" alt="Yupi" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=RAMO" alt="Ramo" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=CORFERIAS" alt="Corferias Bogotá" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=TRIDENT" alt="Trident" class="h-10">
+                <img src="https://placehold.co/180x80/111/fff?text=ALOHA" alt="Aloha" class="h-10">
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTADOS -->
+    <section id="resultados" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="sticky top-24">
+                        <span class="text-red-400 text-sm">RESULTADOS QUE HABLAN</span>
+                        <h2 class="text-5xl font-semibold mt-3 leading-none">“Conocer es saber vender de la mejor manera a tu cliente”</h2>
+                        <p class="mt-8 text-zinc-400">Estrategias probadas que generan crecimiento real, no promesas.</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <!-- Stat 1 -->
+                    <div class="bg-zinc-900 p-8 rounded-3xl flex gap-8 items-center border border-zinc-800">
+                        <div class="stat-number text-7xl text-red-400 font-bold">89</div>
+                        <div>
+                            <div class="text-2xl">Por ciento de acierto</div>
+                            <div class="text-zinc-400">en proyectos de marketing y ventas</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stat 2 -->
+                    <div class="bg-zinc-900 p-8 rounded-3xl flex gap-8 items-center border border-zinc-800">
+                        <div class="stat-number text-7xl text-red-400 font-bold">259</div>
+                        <div>
+                            <div class="text-2xl">% crecimiento orgánico</div>
+                            <div class="text-zinc-400">en redes sociales en solo 2 semanas</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stat 3 -->
+                    <div class="bg-zinc-900 p-8 rounded-3xl flex gap-8 items-center border border-zinc-800">
+                        <div class="stat-number text-7xl text-red-400 font-bold">26</div>
+                        <div>
+                            <div class="text-2xl">% clientes recurrentes</div>
+                            <div class="text-zinc-400">gracias a estrategias de retargeting y ads</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISIÓN -->
+    <section id="vision" class="py-24 bg-zinc-900">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="max-w-2xl mx-auto">
+                <span class="inline-block px-6 py-2 bg-gradient-to-r from-red-600 to-red-900 rounded-full text-sm font-medium mb-6">MI VISIÓN 2026</span>
+                
+                <h2 class="text-5xl font-semibold leading-tight">
+                    Crear la agencia de marketing digital + academia más potente de Latinoamérica
+                </h2>
+                
+                <p class="mt-8 text-xl text-zinc-400">
+                    Una comunidad donde creadores y emprendedores explotan su creatividad con las estrategias más ganadoras del momento. 
+                    High ticket, IA, legalidad de marca y crecimiento exponencial.
+                </p>
+                
+                <div class="mt-12 bg-black border border-zinc-700 rounded-3xl p-8">
+                    <div class="text-left max-w-md mx-auto">
+                        <div class="flex justify-between text-xs text-zinc-400 mb-2">
+                            <div>PRÓXIMO PASO</div>
+                            <div class="text-red-400">YA</div>
+                        </div>
+                        <div class="h-px bg-zinc-700 mb-6"></div>
+                        <div class="text-2xl font-medium">¿Quieres formar parte de la próxima generación de marketers que dominan el juego?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-5xl font-semibold">Listo para escalar tu marca</h2>
+                    <p class="mt-6 text-zinc-400 text-lg">
+                        Una llamada o mensaje y en minutos tienes una propuesta personalizada.
+                    </p>
+                    
+                    <div class="mt-16 space-y-8">
+                        <div class="flex gap-6">
+                            <i class="fas fa-phone text-3xl text-red-400"></i>
+                            <div>
+                                <div class="font-medium">WhatsApp directo</div>
+                                <a href="https://wa.me/573125456301" class="text-3xl font-light text-red-400">+57 312 545 6301</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-6">
+                            <i class="fas fa-envelope text-3xl text-red-400"></i>
+                            <div>
+                                <div class="font-medium">Email</div>
+                                <a href="mailto:incognitxxworkshop@gmail.com" class="text-lg">incognitxxworkshop@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-16 flex gap-6 text-2xl">
+                        <a href="#" class="hover:text-red-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-red-400 transition-colors"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="hover:text-red-400 transition-colors"><i class="fab fa-twitch"></i></a>
+                        <a href="#" class="hover:text-red-400 transition-colors"><i class="fab fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Formulario simple -->
+                <div class="bg-zinc-900 rounded-3xl p-10">
+                    <form action="https://formsubmit.co/incognitxxworkshop@gmail.com" method="POST" class="space-y-6">
+                        <input type="text" name="nombre" placeholder="Tu nombre" 
+                               class="w-full bg-black border border-zinc-700 focus:border-red-600 outline-none rounded-2xl px-6 py-4">
+                        
+                        <input type="email" name="email" placeholder="Correo electrónico" 
+                               class="w-full bg-black border border-zinc-700 focus:border-red-600 outline-none rounded-2xl px-6 py-4">
+                        
+                        <textarea name="mensaje" rows="5" placeholder="¿En qué te puedo ayudar? (idea, campaña, web, etc.)"
+                                  class="w-full bg-black border border-zinc-700 focus:border-red-600 outline-none rounded-2xl px-6 py-4 resize-none"></textarea>
+                        
+                        <button type="submit"
+                                class="w-full bg-red-600 hover:bg-red-700 py-5 rounded-2xl font-semibold text-lg transition-colors">
+                            ENVIAR MENSAJE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-16 border-t border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-red-600 rounded-2xl flex items-center justify-center text-xs font-bold">IO</div>
+                    <div class="text-xl font-light">SANTIAGO ORJUELA</div>
+                </div>
+                
+                <div class="text-xs text-zinc-500 text-center md:text-right">
+                    © 2026 Incognitxx Workshop • Bogotá, Colombia<br>
+                    Todos los derechos reservados • Estrategia digital exclusiva
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded
+        function initTailwind() {
+            // Nothing extra needed - Tailwind CDN handles it
+        }
+        
+        window.onload = initTailwind;
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

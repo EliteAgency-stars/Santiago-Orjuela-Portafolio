@@ -3,206 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Santiago Orjuela - Incognitxx | Estratega High Ticket, Marketing Digital y Creador de Contenido. 89% de éxito con marcas como Pony Malta, Postobón, ETB, Yupi, Ramo y más.">
-    <title>Santiago Orjuela | Incognitxx - High Ticket Marketing</title>
+    <meta name="description" content="Santiago Orjuela | Incognitxx – Estratega High Ticket & Marketing Digital. Colaboraciones con Pony Malta, Postobón, ETB, Yupi, Ramo, Corferias y más.">
+    <title>Santiago Orjuela | Incognitxx • Marketing de Alto Impacto</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=EB+Garamond:wght@400;500&amp;display=swap');
+
         :root {
-            --red-accent: #c8102e;
+            --accent: #e07a5f;
         }
-        
+
         .tail-container {
-            font-family: 'Inter', system_ui, sans-serif;
+            font-family: 'EB Garamond', serif;
         }
-        
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
         .hero-bg {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
+            background: linear-gradient(135deg, #fffaf5 0%, #f5e8d3 100%);
         }
-        
+
         .logo-grid img {
-            filter: grayscale(100%) brightness(1.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
         .logo-grid img:hover {
-            filter: grayscale(0%) brightness(1.1);
-            transform: scale(1.08);
+            transform: scale(1.15) rotate(2deg);
+            filter: none;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
         }
         
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .stat-number {
             font-family: 'Playfair Display', serif;
+            transition: all 2s ease;
+        }
+
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
-        .nav-link {
-            position: relative;
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px -15px rgba(224, 122, 95, 0.25);
+        }
+
+        .nav-scrolled {
+            background: rgba(255, 250, 245, 0.98) !important;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #c8102e;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover:after {
-            width: 100%;
-        }
-        
-        .section-header {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-header:after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(to right, #c8102e, transparent);
-            bottom: -8px;
-            left: 20%;
-        }
-        
-        /* Foto de perfil real de Instagram/Twitch (buscada y usada directamente) */
-        .profile-pic {
-            background-image: url('https://picsum.photos/id/1015/800/800'); /* Placeholder profesional - puedes reemplazar si subes la tuya */
-            background-size: cover;
-            background-position: center;
+        .animate-in {
+            animation: fadeInUp 1s forwards;
         }
     </style>
 </head>
-<body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
+<body class="tail-container bg-[#fffaf5] text-[#3f2a1e] overflow-x-hidden">
 
     <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-lg border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">IO</div>
-                <div>
-                    <span class="text-2xl font-bold tracking-tighter">SANTIAGO</span>
-                    <span class="text-2xl font-light tracking-tighter text-zinc-400">ORJUELA</span>
+    <nav id="nav" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#f5e8d3] transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-[#e07a5f] rounded-2xl flex items-center justify-center text-white font-bold text-3xl shadow-inner">IO</div>
+                <div class="text-3xl tracking-tighter">
+                    <span class="font-bold">SANTIAGO</span>
+                    <span class="font-light text-[#8c6f4f]">ORJUELA</span>
                 </div>
             </div>
             
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#sobre" class="nav-link">SOBRE MÍ</a>
-                <a href="#servicios" class="nav-link">SERVICIOS</a>
-                <a href="#marcas" class="nav-link">MARCAS</a>
-                <a href="#resultados" class="nav-link">RESULTADOS</a>
-                <a href="#vision" class="nav-link">VISIÓN</a>
-                <a href="#contacto" class="nav-link">CONTACTO</a>
+            <div class="hidden md:flex items-center gap-10 text-lg font-medium">
+                <a href="#sobre" class="nav-link hover:text-[#e07a5f] transition-colors">Sobre mí</a>
+                <a href="#servicios" class="nav-link hover:text-[#e07a5f] transition-colors">Servicios</a>
+                <a href="#marcas" class="nav-link hover:text-[#e07a5f] transition-colors">Marcas</a>
+                <a href="#resultados" class="nav-link hover:text-[#e07a5f] transition-colors">Resultados</a>
+                <a href="#vision" class="nav-link hover:text-[#e07a5f] transition-colors">Visión</a>
+                <a href="#contacto" class="nav-link hover:text-[#e07a5f] transition-colors">Contacto</a>
             </div>
             
             <a href="https://wa.me/573125456301" target="_blank" 
-               class="bg-red-600 hover:bg-red-700 transition-colors px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2">
-                <i class="fab fa-whatsapp"></i>
+               class="bg-[#e07a5f] hover:bg-[#c15e46] text-white transition-all px-8 py-4 rounded-3xl text-sm font-medium flex items-center gap-3 shadow-lg">
+                <i class="fab fa-whatsapp text-xl"></i>
                 WHATSAPP
             </a>
         </div>
     </nav>
 
     <!-- HERO -->
-    <section class="hero-bg min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 bg-zinc-900 border border-red-900 px-5 py-2 rounded-full text-red-400 text-xs font-medium tracking-widest">
-                    <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                    89% DE ÉXITO EN COLABORACIONES
+    <section class="hero-bg min-h-screen flex items-center pt-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7 space-y-10">
+                <div class="inline-flex items-center gap-3 bg-white/70 backdrop-blur px-6 py-3 rounded-3xl text-[#e07a5f] text-sm font-medium tracking-widest shadow">
+                    <div class="w-3 h-3 bg-[#e07a5f] rounded-full animate-pulse"></div>
+                    89% DE ÉXITO EN PROYECTOS
                 </div>
                 
-                <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tighter">
+                <h1 class="text-7xl md:text-[5.8rem] leading-none font-bold tracking-tighter animate-in" style="animation-delay: 200ms">
                     SANTIAGO<br>ORJUELA
                 </h1>
                 
-                <div class="text-3xl font-light text-zinc-400">
-                    Incognitxx • Experto en <span class="text-red-400">Marketing Digital</span><br>
-                    Estratega High Ticket • Creador de Contenido
+                <div class="text-4xl font-light text-[#8c6f4f] max-w-lg animate-in" style="animation-delay: 400ms">
+                    Incognitxx • Estratega High Ticket<br>
+                    Marketing Digital &amp; Creador de Contenido
                 </div>
                 
-                <p class="max-w-md text-lg text-zinc-300">
-                    Idea en 5 minutos → Propuesta digital completa, escalable y lista para ejecutar.
+                <p class="text-2xl max-w-md text-[#6b5a4a] animate-in" style="animation-delay: 600ms">
+                    Idea en 5 minutos → Propuesta completa, elegante y lista para crecer.
                 </p>
                 
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-6 animate-in" style="animation-delay: 800ms">
                     <a href="https://wa.me/573125456301" target="_blank"
-                       class="bg-white text-black hover:bg-zinc-200 transition-colors px-8 py-4 rounded-2xl font-semibold flex items-center gap-3 text-lg">
-                        <i class="fab fa-whatsapp text-green-500"></i>
+                       class="bg-[#3f2a1e] hover:bg-[#2a1c12] text-white px-10 py-6 rounded-3xl text-xl font-medium flex items-center gap-4 transition-all shadow-xl">
+                        <i class="fab fa-whatsapp text-2xl"></i>
                         HABLEMOS AHORA
                     </a>
-                    
-                    <a href="#resultados" 
-                       class="border border-zinc-600 hover:border-red-600 transition-colors px-8 py-4 rounded-2xl font-medium flex items-center gap-2">
-                        VER RESULTADOS →
-                    </a>
+                    <a href="#resultados" class="border-2 border-[#e07a5f] hover:bg-[#e07a5f] hover:text-white px-10 py-6 rounded-3xl text-xl font-medium transition-all">Ver resultados →</a>
                 </div>
                 
-                <div class="pt-8 border-t border-zinc-800 flex items-center gap-8 text-sm">
+                <div class="flex items-center gap-12 pt-8 animate-in" style="animation-delay: 1000ms">
                     <div>
-                        <div class="text-red-400 font-mono text-4xl">259%</div>
-                        <div class="text-zinc-400 text-xs tracking-widest">CRECIMIENTO ORGÁNICO EN 2 SEMANAS</div>
+                        <div class="stat-number text-6xl font-bold text-[#e07a5f]" data-target="259">0</div>
+                        <div class="text-sm tracking-widest text-[#8c6f4f]">CRECIMIENTO ORGÁNICO EN 2 SEMANAS</div>
                     </div>
-                    <div class="h-8 w-px bg-zinc-700"></div>
+                    <div class="h-12 w-px bg-[#e07a5f]/30"></div>
                     <div>
-                        <div class="text-red-400 font-mono text-4xl">26%</div>
-                        <div class="text-zinc-400 text-xs tracking-widest">CLIENTES QUE VUELVEN</div>
+                        <div class="stat-number text-6xl font-bold text-[#e07a5f]" data-target="26">0</div>
+                        <div class="text-sm tracking-widest text-[#8c6f4f]">CLIENTES QUE VUELVEN</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Foto de perfil real (buscada de Incognitxx) -->
-            <div class="relative flex justify-center">
-                <div class="w-80 h-80 md:w-96 md:h-96 bg-gradient-to-br from-red-900/30 to-transparent rounded-[4rem] rotate-12 flex items-center justify-center shadow-2xl overflow-hidden">
-                    <div class="text-center -rotate-12 w-full h-full profile-pic flex items-center justify-center">
-                        <div class="w-40 h-40 bg-zinc-900/80 backdrop-blur rounded-3xl flex items-center justify-center border border-red-900/50">
-                            <span class="text-8xl font-black text-red-600/80 drop-shadow-2xl">IO</span>
-                        </div>
-                    </div>
+            <!-- Foto perfil elegante -->
+            <div class="md:col-span-5 relative flex justify-center">
+                <div class="w-96 h-96 bg-white rounded-[4rem] shadow-2xl overflow-hidden rotate-6 transition-transform hover:rotate-0">
+                    <img src="https://picsum.photos/id/1005/800/800" 
+                         alt="Santiago Orjuela - Incognitxx" 
+                         class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-white px-8 py-5 rounded-3xl shadow-xl text-center">
+                    <div class="text-[#e07a5f] text-xs tracking-[3px] font-medium">INCOGNITXX</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SOBRE MÍ -->
-    <section id="sobre" class="py-24 bg-zinc-900">
+    <section id="sobre" class="section py-28 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-12 gap-16 items-center">
                 <div class="md:col-span-5">
                     <img src="https://picsum.photos/id/1015/800/900" 
-                         alt="Santiago Orjuela - Incognitxx" 
-                         class="w-full rounded-3xl shadow-2xl border border-zinc-700">
+                         alt="Santiago Orjuela" 
+                         class="w-full rounded-3xl shadow-2xl">
                 </div>
                 
                 <div class="md:col-span-7 space-y-8">
-                    <div class="section-header">
-                        <span class="text-red-400 text-sm font-medium tracking-widest">INCÓGNITA RESUELTA</span>
-                    </div>
+                    <div class="text-[#e07a5f] text-sm font-medium tracking-widest">LA INCÓGNITA RESUELTA</div>
                     
-                    <h2 class="text-5xl font-semibold leading-none">
+                    <h2 class="text-6xl font-light leading-none">
                         Hola, soy Santiago Orjuela.<br>
-                        <span class="text-zinc-400">Incognitxx en Twitch • Estratega de alto impacto.</span>
+                        <span class="text-[#8c6f4f]">Incognitxx • Estratega de alto impacto.</span>
                     </h2>
                     
-                    <div class="prose prose-invert max-w-none text-lg text-zinc-300">
-                        <p>89% de acierto con marcas como Pony Malta, Postobón, ETB, Yupi, Ramo, Corferias y muchas más. Manejo completo de Meta Ads, Google Ads, TikTok Ads, IA aplicada al marketing, diseño gráfico, creación de páginas web y respaldo legal de marca.</p>
-                        <p><strong>“Las redes son una empresa. Si entiendes su mundo, ganan todos.”</strong></p>
+                    <div class="text-2xl text-[#6b5a4a] max-w-2xl">
+                        89% de éxito con marcas como Pony Malta, Postobón, ETB, Yupi, Ramo y Corferias. 
+                        Manejo Meta Ads, Google Ads, TikTok, IA, diseño gráfico y respaldo legal de marca.
                     </div>
                     
-                    <div class="flex flex-wrap gap-6">
-                        <div class="flex items-center gap-4">
-                            <div class="text-5xl font-light text-red-400">90M</div>
-                            <div class="text-xs leading-none">REPRODUCCIONES<br>EN TIKTOK AL MES</div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="text-5xl font-light text-red-400">77K</div>
-                            <div class="text-xs leading-none">SEGUIDORES<br>EN TWITCH</div>
-                        </div>
+                    <div class="text-3xl italic text-[#3f2a1e]">
+                        “Las redes son una empresa. Si entiendes su mundo, ganan todos.”
                     </div>
                 </div>
             </div>
@@ -210,101 +195,84 @@
     </section>
 
     <!-- SERVICIOS -->
-    <section id="servicios" class="py-24">
+    <section id="servicios" class="section py-28 bg-[#fffaf5]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="px-4 py-1 bg-red-900/30 text-red-400 text-xs font-medium rounded-full">EXPERTO EN TODO EL FUNNEL</span>
-                <h2 class="text-5xl font-semibold mt-4">Servicios que convierten</h2>
+            <div class="text-center mb-20">
+                <span class="px-8 py-3 bg-white text-[#e07a5f] rounded-3xl text-sm font-medium">TODO EL FUNNEL CON ELEGANCIA</span>
+                <h2 class="text-6xl mt-6">Servicios que transforman</h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="group bg-zinc-900 hover:bg-zinc-800 border border-transparent hover:border-red-600 transition-all rounded-3xl p-8">
-                    <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl mb-6 text-3xl">📈</div>
-                    <h3 class="text-2xl font-semibold mb-3">Meta Ads + Google + TikTok Ads</h3>
-                    <p class="text-zinc-400">Investigación de mercado + campañas que generan clientes. Promedio 26% de retorno.</p>
-                    <div class="mt-8 text-xs text-red-400 font-medium">+259% crecimiento orgánico en 2 semanas</div>
+                <div class="card-hover bg-white p-12 rounded-3xl border border-[#f5e8d3]">
+                    <div class="text-5xl mb-8">📈</div>
+                    <h3 class="text-4xl font-light">Meta • Google • TikTok Ads</h3>
+                    <p class="mt-6 text-xl text-[#6b5a4a]">Investigación profunda + campañas de alto retorno. Promedio 26% de clientes recurrentes.</p>
+                    <div class="mt-10 text-[#e07a5f] text-sm font-medium">+259% crecimiento orgánico en 2 semanas</div>
                 </div>
                 
-                <div class="group bg-zinc-900 hover:bg-zinc-800 border border-transparent hover:border-red-600 transition-all rounded-3xl p-8">
-                    <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl mb-6 text-3xl">🌐</div>
-                    <h3 class="text-2xl font-semibold mb-3">Creación de Páginas Web + IA</h3>
-                    <p class="text-zinc-400">Sitios profesionales, escalables y optimizados para conversión. Idea hoy, web en 48h.</p>
+                <div class="card-hover bg-white p-12 rounded-3xl border border-[#f5e8d3]">
+                    <div class="text-5xl mb-8">🌐</div>
+                    <h3 class="text-4xl font-light">Páginas Web + IA</h3>
+                    <p class="mt-6 text-xl text-[#6b5a4a]">Sitios elegantes, escalables y listos para convertir. Idea hoy, web mañana.</p>
                 </div>
                 
-                <div class="group bg-zinc-900 hover:bg-zinc-800 border border-transparent hover:border-red-600 transition-all rounded-3xl p-8">
-                    <div class="w-12 h-12 bg-red-600/10 flex items-center justify-center rounded-2xl mb-6 text-3xl">🔍</div>
-                    <h3 class="text-2xl font-semibold mb-3">Diseño Gráfico + Legislación de Marca</h3>
-                    <p class="text-zinc-400">Identidad visual + respaldo legal completo. Tu idea protegida y lista para escalar.</p>
+                <div class="card-hover bg-white p-12 rounded-3xl border border-[#f5e8d3]">
+                    <div class="text-5xl mb-8">🔍</div>
+                    <h3 class="text-4xl font-light">Diseño Gráfico + Legislación de Marca</h3>
+                    <p class="mt-6 text-xl text-[#6b5a4a]">Identidad visual premium + respaldo legal completo. Tu marca protegida y lista para brillar.</p>
                 </div>
-            </div>
-            
-            <div class="mt-16 text-center text-sm text-zinc-400 max-w-md mx-auto">
-                Salud • Educación • Ventas • Servicios • Productos • Eventos • Tecnología • y más sectores.
             </div>
         </div>
     </section>
 
-    <!-- MARCAS - LOGOS REALES BUSCADOS -->
-    <section id="marcas" class="py-24 bg-zinc-900">
+    <!-- MARCAS -->
+    <section id="marcas" class="section py-28 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-semibold">Marcas que ya confiaron</h2>
-                <p class="text-zinc-400 mt-2">Colaboraciones reales con resultados reales</p>
+            <div class="text-center mb-16">
+                <h2 class="text-5xl">Marcas que ya crecieron conmigo</h2>
             </div>
             
-            <div class="logo-grid grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-8 items-center justify-items-center">
-                <!-- Logos buscados y colocados con URLs estables (transparentes donde posible) -->
-                <img src="https://logos.fandom.com/wiki/File:Pony_Malta_logo.png" alt="Pony Malta" class="h-10 object-contain">
-                <img src="https://www.logo.wine/a/logo/Postob%C3%B3n/Postob%C3%B3n-Logo.wine.svg" alt="Postobón" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=STREAM+RIDERS" alt="Stream Riders" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=THE+WOW" alt="The Wow" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=SOFA" alt="SOFA" class="h-10 object-contain">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ETB_Colombia_logo.svg/512px-ETB_Colombia_logo.svg.png" alt="ETB" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=PULLMAN" alt="Pullman" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=YUPI" alt="Yupi" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=RAMO" alt="Ramo" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=CORFERIAS" alt="Corferias Bogotá" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=TRIDENT" alt="Trident" class="h-10 object-contain">
-                <img src="https://placehold.co/180x80/111/fff?text=ALOHA" alt="Aloha" class="h-10 object-contain">
+            <div class="logo-grid grid grid-cols-3 md:grid-cols-6 gap-12 items-center justify-items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Pony_Malta_logo.svg/800px-Pony_Malta_logo.svg.png" alt="Pony Malta" class="h-14">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Postob%C3%B3n_logo.svg/512px-Postob%C3%B3n_logo.svg.png" alt="Postobón" class="h-14">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ETB_Colombia_logo.svg/512px-ETB_Colombia_logo.svg.png" alt="ETB" class="h-14">
+                <img src="https://www.pngkey.com/png/full/u2y3q8t4a9w7i1a9_yupi-indo-jelly-gum-yupi-candy.png" alt="Yupi" class="h-14">
+                <img src="https://logos.fandom.com/wiki/File:Ramo_logo.png" alt="Ramo" class="h-14">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Logo_de_Corferias.svg" alt="Corferias" class="h-14">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Trident_logo.svg/512px-Trident_logo.svg.png" alt="Trident" class="h-14">
+                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=ALOHA" alt="Aloha" class="h-14">
+                <!-- Los restantes con placeholders elegantes -->
+                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=STREAM+RIDERS" alt="Stream Riders" class="h-14">
+                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=THE+WOW" alt="The Wow" class="h-14">
+                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=SOFA" alt="SOFA" class="h-14">
+                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=PULLMAN" alt="Pullman" class="h-14">
             </div>
         </div>
     </section>
 
     <!-- RESULTADOS -->
-    <section id="resultados" class="py-24">
+    <section id="resultados" class="section py-28 bg-[#fffaf5]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12">
-                <div>
-                    <div class="sticky top-24">
-                        <span class="text-red-400 text-sm">RESULTADOS QUE HABLAN</span>
-                        <h2 class="text-5xl font-semibold mt-3 leading-none">“Conocer es saber vender de la mejor manera a tu cliente”</h2>
-                        <p class="mt-8 text-zinc-400">Estrategias probadas que generan crecimiento real.</p>
+            <div class="grid md:grid-cols-12 gap-16">
+                <div class="md:col-span-5">
+                    <div class="sticky top-32">
+                        <span class="text-[#e07a5f] text-sm tracking-widest">RESULTADOS QUE INSPIRAN</span>
+                        <h2 class="text-6xl font-light mt-4">"Conocer es saber vender de la mejor manera a tu cliente"</h2>
                     </div>
                 </div>
                 
-                <div class="space-y-8">
-                    <div class="bg-zinc-900 p-8 rounded-3xl flex gap-8 items-center border border-zinc-800">
-                        <div class="stat-number text-7xl text-red-400 font-bold">89</div>
-                        <div>
-                            <div class="text-2xl">Por ciento de acierto</div>
-                            <div class="text-zinc-400">en proyectos de marketing y ventas</div>
-                        </div>
+                <div class="md:col-span-7 space-y-12">
+                    <div class="flex gap-10 items-center bg-white p-10 rounded-3xl">
+                        <div class="stat-number text-7xl font-bold text-[#e07a5f]" data-target="89">0</div>
+                        <div class="text-3xl">Por ciento de acierto en proyectos</div>
                     </div>
-                    
-                    <div class="bg-zinc-900 p-8 rounded-3xl flex gap-8 items-center border border-zinc-800">
-                        <div class="stat-number text-7xl text-red-400 font-bold">259</div>
-                        <div>
-                            <div class="text-2xl">% crecimiento orgánico</div>
-                            <div class="text-zinc-400">en redes sociales en solo 2 semanas</div>
-                        </div>
+                    <div class="flex gap-10 items-center bg-white p-10 rounded-3xl">
+                        <div class="stat-number text-7xl font-bold text-[#e07a5f]" data-target="259">0</div>
+                        <div class="text-3xl">% crecimiento orgánico</div>
                     </div>
-                    
-                    <div class="bg-zinc-900 p-8 rounded-3xl flex gap-8 items-center border border-zinc-800">
-                        <div class="stat-number text-7xl text-red-400 font-bold">26</div>
-                        <div>
-                            <div class="text-2xl">% clientes recurrentes</div>
-                            <div class="text-zinc-400">gracias a estrategias de retargeting y ads</div>
-                        </div>
+                    <div class="flex gap-10 items-center bg-white p-10 rounded-3xl">
+                        <div class="stat-number text-7xl font-bold text-[#e07a5f]" data-target="26">0</div>
+                        <div class="text-3xl">% clientes recurrentes</div>
                     </div>
                 </div>
             </div>
@@ -312,94 +280,122 @@
     </section>
 
     <!-- VISIÓN -->
-    <section id="vision" class="py-24 bg-zinc-900">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <span class="inline-block px-6 py-2 bg-gradient-to-r from-red-600 to-red-900 rounded-full text-sm font-medium mb-6">MI VISIÓN 2026</span>
-            <h2 class="text-5xl font-semibold leading-tight">
-                Crear la agencia de marketing digital + academia más potente de Latinoamérica
-            </h2>
-            <p class="mt-8 text-xl text-zinc-400">
-                Una comunidad donde creadores y emprendedores explotan su creatividad con las estrategias más ganadoras del momento.
-            </p>
+    <section id="vision" class="section py-28 bg-white text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="inline-block px-8 py-3 bg-[#f5e8d3] text-[#e07a5f] rounded-3xl mb-8 text-sm font-medium">MI VISIÓN 2026</div>
+            <h2 class="text-6xl font-light leading-tight">Crear la agencia + academia de marketing digital más elegante y poderosa de Latinoamérica</h2>
+            <p class="mt-12 text-2xl text-[#6b5a4a]">Una comunidad donde la creatividad se encuentra con estrategias ganadoras, IA y respaldo legal.</p>
         </div>
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16">
-                <div>
-                    <h2 class="text-5xl font-semibold">Listo para escalar tu marca</h2>
-                    <p class="mt-6 text-zinc-400 text-lg">
-                        Una llamada o mensaje y en minutos tienes una propuesta personalizada.
-                    </p>
-                    
-                    <div class="mt-16 space-y-8">
-                        <div class="flex gap-6">
-                            <i class="fas fa-phone text-3xl text-red-400"></i>
-                            <div>
-                                <div class="font-medium">WhatsApp directo</div>
-                                <a href="https://wa.me/573125456301" class="text-3xl font-light text-red-400">+57 312 545 6301</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex gap-6">
-                            <i class="fas fa-envelope text-3xl text-red-400"></i>
-                            <div>
-                                <div class="font-medium">Email</div>
-                                <a href="mailto:incognitxxworkshop@gmail.com" class="text-lg">incognitxxworkshop@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Redes sociales reales buscadas -->
-                    <div class="mt-16 flex gap-8 text-3xl">
-                        <a href="https://www.instagram.com/incognitxx._/" target="_blank" class="hover:text-red-400 transition-colors"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tiktok.com/@incognitxx_official" target="_blank" class="hover:text-red-400 transition-colors"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.twitch.tv/incognitxx" target="_blank" class="hover:text-red-400 transition-colors"><i class="fab fa-twitch"></i></a>
-                        <a href="#" target="_blank" class="hover:text-red-400 transition-colors"><i class="fab fa-x-twitter"></i></a>
-                    </div>
-                </div>
+    <section id="contacto" class="section py-28 bg-[#fffaf5]">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20">
+            <div>
+                <h2 class="text-6xl font-light">Listo para hacer crecer tu marca con elegancia</h2>
+                <p class="mt-8 text-2xl text-[#6b5a4a]">Una idea, un mensaje y en minutos tienes una propuesta premium.</p>
                 
-                <div class="bg-zinc-900 rounded-3xl p-10">
-                    <form action="https://formsubmit.co/incognitxxworkshop@gmail.com" method="POST" class="space-y-6">
-                        <input type="text" name="nombre" placeholder="Tu nombre" class="w-full bg-black border border-zinc-700 focus:border-red-600 outline-none rounded-2xl px-6 py-4">
-                        <input type="email" name="email" placeholder="Correo electrónico" class="w-full bg-black border border-zinc-700 focus:border-red-600 outline-none rounded-2xl px-6 py-4">
-                        <textarea name="mensaje" rows="5" placeholder="¿En qué te puedo ayudar? (idea, campaña, web, etc.)" class="w-full bg-black border border-zinc-700 focus:border-red-600 outline-none rounded-2xl px-6 py-4 resize-none"></textarea>
-                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-5 rounded-2xl font-semibold text-lg transition-colors">
-                            ENVIAR MENSAJE
-                        </button>
-                    </form>
+                <div class="mt-16 space-y-10">
+                    <div class="flex gap-6 items-center">
+                        <i class="fab fa-whatsapp text-5xl text-[#e07a5f]"></i>
+                        <div>
+                            <div class="font-medium text-xl">WhatsApp directo</div>
+                            <a href="https://wa.me/573125456301" class="text-4xl text-[#e07a5f]">+57 312 545 6301</a>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <i class="fas fa-envelope text-5xl text-[#e07a5f]"></i>
+                        <div>
+                            <div class="font-medium text-xl">Correo</div>
+                            <a href="mailto:incognitxxworkshop@gmail.com" class="text-2xl">incognitxxworkshop@gmail.com</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="bg-white p-12 rounded-3xl shadow-inner">
+                <form action="https://formsubmit.co/incognitxxworkshop@gmail.com" method="POST" class="space-y-8">
+                    <input type="text" name="nombre" placeholder="Tu nombre" class="w-full border-b border-[#e07a5f]/30 focus:border-[#e07a5f] py-6 text-2xl outline-none bg-transparent">
+                    <input type="email" name="email" placeholder="Tu correo" class="w-full border-b border-[#e07a5f]/30 focus:border-[#e07a5f] py-6 text-2xl outline-none bg-transparent">
+                    <textarea name="mensaje" rows="4" placeholder="¿Qué idea quieres convertir en realidad?" class="w-full border-b border-[#e07a5f]/30 focus:border-[#e07a5f] py-6 text-2xl outline-none bg-transparent resize-none"></textarea>
+                    <button type="submit" class="w-full bg-[#3f2a1e] hover:bg-[#2a1c12] text-white py-7 rounded-3xl text-xl font-medium transition-all">ENVIAR PROPUESTA</button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-black py-16 border-t border-zinc-800">
+    <footer class="bg-[#3f2a1e] text-[#f5e8d3] py-20">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-red-600 rounded-2xl flex items-center justify-center text-xs font-bold">IO</div>
-                    <div class="text-xl font-light">SANTIAGO ORJUELA • INCOGNITXX</div>
-                </div>
-                
-                <div class="text-xs text-zinc-500">
-                    © 2026 Incognitxx Workshop • Bogotá, Colombia<br>
-                    Todos los derechos reservados
-                </div>
+            <div class="flex justify-center items-center gap-4 mb-8">
+                <div class="w-9 h-9 bg-[#e07a5f] rounded-2xl flex items-center justify-center text-white text-3xl">IO</div>
+                <span class="text-3xl font-light">SANTIAGO ORJUELA • INCOGNITXX</span>
             </div>
+            <div class="text-sm">© 2026 Bogotá, Colombia • Todos los derechos reservados</div>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        // Tailwind
+        tailwind.config = {
+            content: [],
+            theme: { extend: {} }
+        }
+
+        // Navbar scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('nav-scrolled', window.scrollY > 80);
+        });
+
+        // Reveal sections
+        function revealSections() {
+            document.querySelectorAll('.section').forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    section.classList.add('visible');
                 }
+            });
+        }
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('load', revealSections);
+
+        // Counter animation
+        function animateCounters() {
+            document.querySelectorAll('.stat-number').forEach(el => {
+                const target = parseInt(el.getAttribute('data-target'));
+                let count = 0;
+                const increment = Math.ceil(target / 60);
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        el.textContent = target + (target === 259 ? '%' : '');
+                        clearInterval(timer);
+                    } else {
+                        el.textContent = count;
+                    }
+                }, 30);
+            });
+        }
+
+        // Trigger counters when results section is visible
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                observer.disconnect();
+            }
+        }, { threshold: 0.5 });
+
+        setTimeout(() => {
+            const resultsSection = document.getElementById('resultados');
+            if (resultsSection) observer.observe(resultsSection);
+        }, 1000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>

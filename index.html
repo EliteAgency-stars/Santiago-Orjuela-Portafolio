@@ -1,403 +1,840 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Santiago Orjuela | Incognitxx – Estratega High Ticket & Marketing Digital. Colaboraciones con Pony Malta, Postobón, ETB, Yupi, Ramo, Corferias y más.">
-    <title>Santiago Orjuela | Incognitxx • Marketing de Alto Impacto</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=EB+Garamond:wght@400;500&amp;display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santiago Orjuela — Estrategia Digital & High Ticket</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cormorant+Infant:ital,wght@0,300;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:   #faf8f4;
+  --cream2:  #f5f1eb;
+  --parchment: #ede8df;
+  --blush:   #f2e4dc;
+  --rose:    #d4a89a;
+  --sage:    #b8c4b1;
+  --champagne: #d6c9a8;
+  --taupe:   #8c7b6b;
+  --ink:     #1c1a17;
+  --ink2:    #2e2b25;
+  --muted:   #9c8f82;
+  --border:  rgba(140,123,107,0.18);
+  --border2: rgba(140,123,107,0.08);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --serif2: 'Cormorant Infant', Georgia, serif;
+  --sans: 'Jost', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  overflow-x: hidden;
+}
 
-        :root {
-            --accent: #e07a5f;
-        }
+/* CURSOR */
+.cur-ring {
+  position: fixed; top: 0; left: 0;
+  width: 36px; height: 36px;
+  border: 1px solid var(--rose);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .4s, height .4s, border-color .4s;
+  mix-blend-mode: multiply;
+}
+.cur-dot {
+  position: fixed; top: 0; left: 0;
+  width: 6px; height: 6px;
+  background: var(--rose);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%,-50%);
+}
 
-        .tail-container {
-            font-family: 'EB Garamond', serif;
-        }
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--champagne); }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 28px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .5s, padding .4s, box-shadow .4s;
+}
+nav.scrolled {
+  background: rgba(250,248,244,0.95);
+  backdrop-filter: blur(12px);
+  padding: 18px 64px;
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo {
+  font-family: var(--serif); font-size: 1.5rem; font-weight: 600;
+  letter-spacing: .5px; color: var(--ink); text-decoration: none;
+}
+.nav-logo em { font-style: italic; font-weight: 300; color: var(--rose); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a {
+  font-size: .72rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; transition: color .3s; font-weight: 400;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  font-family: var(--serif) !important; font-size: 1rem !important;
+  font-style: italic !important; letter-spacing: 0 !important;
+  text-transform: none !important; color: var(--rose) !important;
+  font-weight: 600 !important; border-bottom: 1px solid transparent !important;
+  transition: border-color .3s !important;
+}
+.nav-cta:hover { border-color: var(--rose) !important; }
 
-        .hero-bg {
-            background: linear-gradient(135deg, #fffaf5 0%, #f5e8d3 100%);
-        }
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 64px 80px;
+  position: relative; overflow: hidden;
+}
+.hero-bg-text {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif); font-size: clamp(12rem, 22vw, 22rem);
+  font-weight: 700; color: transparent;
+  -webkit-text-stroke: 1px rgba(140,123,107,0.07);
+  white-space: nowrap; pointer-events: none; letter-spacing: -8px;
+  animation: bgPulse 8s ease-in-out infinite;
+}
+@keyframes bgPulse {
+  0%,100% { opacity:1; transform: translate(-50%,-50%) scale(1); }
+  50%      { opacity:.6; transform: translate(-50%,-50%) scale(1.02); }
+}
+.hero-grain {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px;
+}
+.hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+.blob1 { width: 600px; height: 600px; background: var(--blush); opacity: .45; top: -100px; right: -80px; animation: blobFloat1 12s ease-in-out infinite; }
+.blob2 { width: 400px; height: 400px; background: var(--sage); opacity: .22; bottom: 0; left: -60px; animation: blobFloat2 15s ease-in-out infinite; }
+.blob3 { width: 300px; height: 300px; background: var(--champagne); opacity: .3; top: 40%; right: 30%; animation: blobFloat3 10s ease-in-out infinite; }
+@keyframes blobFloat1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px,40px) scale(1.08); } }
+@keyframes blobFloat2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-30px) scale(1.05); } }
+@keyframes blobFloat3 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-20px,20px); } }
 
-        .logo-grid img {
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        .logo-grid img:hover {
-            transform: scale(1.15) rotate(2deg);
-            filter: none;
-        }
+.hero-tag {
+  font-size: .7rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+  opacity: 0; animation: slideUp .9s .2s forwards;
+}
+.hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--rose); }
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(5rem, 10vw, 11rem);
+  font-weight: 300; line-height: .92;
+  letter-spacing: -2px; position: relative; z-index: 2;
+  opacity: 0; animation: slideUp .9s .35s forwards;
+}
+.hero-title .heavy { font-weight: 700; }
+.hero-title .italic { font-style: italic; color: var(--rose); font-weight: 300; }
+.hero-title .small {
+  font-size: .38em; font-weight: 300; letter-spacing: 4px;
+  text-transform: uppercase; font-family: var(--sans); color: var(--muted);
+  display: block; margin-top: 12px; font-style: normal;
+}
+.hero-bottom {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid var(--border);
+  opacity: 0; animation: slideUp .9s .55s forwards;
+  position: relative; z-index: 2; gap: 32px; flex-wrap: wrap;
+}
+.hero-desc { max-width: 420px; font-size: 1rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-shrink: 0; }
+.btn-serif {
+  font-family: var(--serif); font-size: 1.15rem; font-style: italic;
+  color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px; transition: color .3s, border-color .3s; white-space: nowrap;
+}
+.btn-serif:hover { color: var(--rose); border-color: var(--rose); }
+.btn-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: var(--cream);
+  font-size: .72rem; letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 32px; text-decoration: none; border-radius: 100px;
+  transition: transform .3s, background .3s, box-shadow .3s;
+  font-weight: 400; white-space: nowrap;
+}
+.btn-pill:hover {
+  background: var(--ink2); transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(28,26,23,.18);
+}
+.hero-stats {
+  display: flex; gap: 40px;
+  opacity: 0; animation: slideUp .9s .7s forwards;
+  position: relative; z-index: 2; margin-top: 40px;
+}
+.hstat-num {
+  font-family: var(--serif); font-size: 2.8rem; font-weight: 300;
+  line-height: 1; color: var(--ink);
+}
+.hstat-num sup { font-size: .5em; vertical-align: super; color: var(--rose); }
+.hstat-label { font-size: .65rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.hstat-div { width: 1px; background: var(--border); align-self: stretch; }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-        .section {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* MARQUEE */
+.marquee-wrap { overflow: hidden; background: var(--ink); padding: 18px 0; }
+.marquee-track {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: marqueeScroll 35s linear infinite;
+}
+.marquee-item {
+  font-family: var(--serif); font-style: italic;
+  font-size: 1.15rem; color: var(--cream);
+  padding: 0 52px; opacity: .7;
+  display: inline-flex; align-items: center; gap: 28px;
+}
+.marquee-item::after { content: '✦'; font-size: .6rem; opacity: .4; font-style: normal; }
+@keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            transition: all 2s ease;
-        }
+/* SECTION BASE */
+section { padding: 120px 64px; position: relative; }
+.sec-label {
+  font-size: .65rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 16px;
+}
+.sec-label::after { content: ''; width: 40px; height: 1px; background: var(--rose); }
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 300; line-height: .95; letter-spacing: -1px;
+}
+.sec-title em { font-style: italic; color: var(--rose); }
+.sec-title strong { font-weight: 700; }
 
-        .card-hover {
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 60px -15px rgba(224, 122, 95, 0.25);
-        }
+/* ABOUT */
+#about { background: var(--cream2); }
+.about-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 80px; align-items: center; margin-top: 70px;
+}
+.about-portrait { position: relative; height: 560px; }
+.portrait-frame {
+  width: 100%; height: 100%; background: var(--blush);
+  border-radius: 4px; overflow: hidden; position: relative;
+}
+.portrait-frame::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(160deg, var(--blush) 0%, var(--parchment) 100%);
+}
+.portrait-svg {
+  position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 76%; z-index: 2;
+  filter: drop-shadow(0 20px 60px rgba(212,168,154,.4));
+}
+.portrait-deco {
+  position: absolute; top: -20px; right: -20px;
+  width: 120px; height: 120px;
+  border: 1px solid var(--rose); border-radius: 2px; opacity: .5;
+}
+.portrait-badge {
+  position: absolute; bottom: 28px; right: -24px;
+  background: var(--ink); color: var(--cream);
+  padding: 20px 24px; border-radius: 2px; z-index: 10;
+  box-shadow: 0 20px 50px rgba(28,26,23,.2);
+}
+.pb-num { font-family: var(--serif); font-size: 2.4rem; font-weight: 300; line-height: 1; }
+.pb-num em { font-style: italic; color: var(--champagne); }
+.pb-label { font-size: .6rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,248,244,.5); margin-top: 4px; }
+.big-intro {
+  font-family: var(--serif); font-size: clamp(1.5rem,2.5vw,2.2rem);
+  font-weight: 300; line-height: 1.4; margin-bottom: 32px; color: var(--ink2);
+}
+.big-intro em { font-style: italic; color: var(--rose); }
+.about-text p { font-size: .92rem; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+.skills-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+.skill-pill {
+  border: 1px solid var(--border); padding: 7px 18px; border-radius: 100px;
+  font-size: .68rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--taupe); transition: all .35s; cursor: default;
+}
+.skill-pill:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); transform: translateY(-2px); }
 
-        .nav-scrolled {
-            background: rgba(255, 250, 245, 0.98) !important;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-        }
+/* SERVICIOS */
+#servicios { background: var(--cream); }
+.services-layout {
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 80px; margin-top: 70px; align-items: start;
+}
+.services-left .lead {
+  font-family: var(--serif); font-size: 1.4rem;
+  font-style: italic; color: var(--muted); line-height: 1.6;
+  margin-bottom: 32px; max-width: 300px;
+}
+.services-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; background: var(--border); border: 1px solid var(--border);
+}
+.svc-card {
+  background: var(--cream); padding: 40px 36px;
+  position: relative; overflow: hidden; transition: background .4s;
+}
+.svc-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: var(--rose);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .45s cubic-bezier(.16,1,.3,1);
+}
+.svc-card:hover { background: var(--blush); }
+.svc-card:hover::before { transform: scaleX(1); }
+.svc-num {
+  font-family: var(--serif); font-size: 5rem; font-weight: 700;
+  color: rgba(140,123,107,.08); line-height: 1; margin-bottom: 16px;
+}
+.svc-name { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; line-height: 1.2; }
+.svc-desc { font-size: .82rem; color: var(--muted); line-height: 1.75; }
+.svc-arrow {
+  position: absolute; bottom: 28px; right: 28px;
+  font-family: var(--serif); font-size: 1.4rem; font-style: italic;
+  color: var(--rose); opacity: 0; transform: translate(-8px,8px);
+  transition: all .4s;
+}
+.svc-card:hover .svc-arrow { opacity: 1; transform: translate(0,0); }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-in {
-            animation: fadeInUp 1s forwards;
-        }
-    </style>
+/* IMPACTO */
+#impacto { background: var(--ink); color: var(--cream); overflow: hidden; }
+#impacto .sec-title { color: var(--cream); }
+#impacto .sec-title em { color: var(--champagne); }
+#impacto .sec-label { color: rgba(250,248,244,.4); }
+#impacto .sec-label::after { background: var(--champagne); }
+.impact-hero-quote {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+  font-weight: 300; line-height: 1.25;
+  color: rgba(250,248,244,.85); max-width: 900px; margin: 60px 0;
+  border-left: 3px solid var(--rose); padding-left: 32px;
+}
+.impact-hero-quote em { color: var(--champagne); font-style: normal; font-weight: 600; }
+.impact-nums {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 1px; background: rgba(250,248,244,.06);
+  border: 1px solid rgba(250,248,244,.06); margin-bottom: 80px;
+}
+.in-card { background: var(--ink2); padding: 40px 28px; transition: background .35s; }
+.in-card:hover { background: #252119; }
+.in-big {
+  font-family: var(--serif); font-size: clamp(2.2rem,3vw,3.5rem);
+  font-weight: 300; color: var(--champagne); line-height: 1; margin-bottom: 8px;
+}
+.in-label { font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,248,244,.35); }
+.in-sub { font-size: .72rem; color: rgba(250,248,244,.2); margin-top: 6px; }
+.impact-quotes-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.iq-card {
+  background: rgba(250,248,244,.04); border: 1px solid rgba(250,248,244,.06);
+  padding: 36px; border-radius: 2px;
+}
+.iq-quote {
+  font-family: var(--serif); font-style: italic; font-size: 1.3rem;
+  color: rgba(250,248,244,.7); line-height: 1.5; margin-bottom: 20px;
+}
+.iq-stat { font-family: var(--serif); font-size: 3rem; font-weight: 700; color: var(--rose); line-height: 1; }
+.iq-stat-label { font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(250,248,244,.3); margin-top: 4px; }
+
+/* MARCAS */
+#marcas { background: var(--parchment); }
+.brands-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 70px; }
+.brands-desc { font-size: .9rem; color: var(--muted); line-height: 1.8; }
+.brands-sectors { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.stag {
+  border: 1px solid var(--border); padding: 5px 14px; font-size: .65rem;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--taupe);
+  border-radius: 100px; transition: all .3s; cursor: default;
+}
+.stag:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.brands-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 2px; background: var(--border); border: 1px solid var(--border);
+}
+.brand-cell {
+  background: var(--parchment); height: 110px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; transition: background .35s; position: relative; overflow: hidden;
+}
+.brand-cell::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--blush); opacity: 0; transition: opacity .4s;
+}
+.brand-cell:hover::before { opacity: 1; }
+.brand-cell img {
+  max-width: 88px; max-height: 46px; object-fit: contain;
+  position: relative; z-index: 1;
+  filter: grayscale(100%) brightness(.55) contrast(1.1);
+  transition: filter .45s;
+}
+.brand-cell:hover img { filter: grayscale(20%) brightness(.8) contrast(1.05); }
+.brand-txt {
+  font-family: var(--serif); font-size: 1rem; font-weight: 600;
+  letter-spacing: 1px; color: rgba(140,123,107,.45);
+  position: relative; z-index: 1; transition: color .35s; text-align: center; line-height: 1.2;
+}
+.brand-cell:hover .brand-txt { color: var(--taupe); }
+
+/* PROCESO */
+#proceso { background: var(--cream2); }
+.proceso-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 70px; }
+.proceso-lead { font-family: var(--serif); font-style: italic; font-size: clamp(1.2rem,2vw,1.8rem); color: var(--muted); line-height: 1.5; max-width: 420px; }
+.steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.step { background: var(--cream2); padding: 44px 28px; position: relative; overflow: hidden; transition: background .4s; }
+.step:hover { background: var(--blush); }
+.step-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, var(--rose), var(--champagne));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .6s cubic-bezier(.16,1,.3,1);
+}
+.step:hover .step-line { transform: scaleX(1); }
+.step-n { font-family: var(--serif); font-size: 4.5rem; font-weight: 700; color: rgba(140,123,107,.1); line-height: 1; margin-bottom: 20px; }
+.step-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 12px; }
+.step-body { font-size: .8rem; color: var(--muted); line-height: 1.75; }
+.step-time { font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin-top: 20px; }
+
+/* VISION */
+#vision { background: var(--cream); min-height: 70vh; display: flex; align-items: center; overflow: hidden; }
+.vision-inner { position: relative; z-index: 2; max-width: 900px; }
+.vision-watermark {
+  position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+  font-family: var(--serif); font-size: clamp(10rem, 20vw, 20rem);
+  font-weight: 700; color: transparent;
+  -webkit-text-stroke: 1px rgba(212,168,154,.1);
+  white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: -10px;
+}
+.vision-quote {
+  font-family: var(--serif); font-size: clamp(1.8rem,3.5vw,4rem);
+  font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 32px;
+}
+.vision-quote em { font-style: italic; color: var(--rose); }
+.vision-body { font-size: 1rem; color: var(--muted); line-height: 1.9; max-width: 600px; margin-bottom: 48px; font-weight: 300; }
+
+/* CONTACTO */
+#contacto { background: var(--blush); }
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 70px; }
+.headline { font-family: var(--serif); font-size: clamp(3.5rem,7vw,8rem); font-weight: 300; line-height: .92; letter-spacing: -2px; margin-bottom: 32px; }
+.headline em { font-style: italic; color: var(--rose); }
+.headline strong { font-weight: 700; }
+.contact-left p { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: 32px; max-width: 400px; }
+.contact-cards { display: flex; flex-direction: column; gap: 12px; }
+.cc {
+  display: flex; align-items: center; gap: 20px;
+  padding: 20px 24px; background: rgba(255,255,255,.7);
+  border: 1px solid rgba(212,168,154,.2); border-radius: 2px;
+  text-decoration: none; color: var(--ink); transition: all .35s; backdrop-filter: blur(4px);
+}
+.cc:hover { background: white; transform: translateX(10px); box-shadow: 0 8px 30px rgba(212,168,154,.25); border-color: var(--rose); }
+.cc-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--ink); color: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0; transition: background .35s;
+}
+.cc:hover .cc-icon { background: var(--rose); }
+.cc-info { display: flex; flex-direction: column; }
+.cc-info span { font-size: .62rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+.cc-info strong { font-size: .9rem; font-weight: 400; margin-top: 2px; }
+.socials-row { display: flex; gap: 10px; margin-top: 32px; }
+.soc-btn {
+  width: 44px; height: 44px; border: 1px solid rgba(212,168,154,.4);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: var(--taupe); font-size: .9rem;
+  transition: all .35s; background: rgba(255,255,255,.5);
+}
+.soc-btn:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); transform: translateY(-3px); }
+
+/* FOOTER */
+footer {
+  background: var(--ink); color: rgba(250,248,244,.35);
+  padding: 36px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: .68rem; letter-spacing: 1.5px; text-transform: uppercase;
+}
+.footer-logo { font-family: var(--serif); font-size: 1.3rem; font-weight: 300; color: rgba(250,248,244,.5); letter-spacing: .5px; text-transform: none; }
+.footer-logo em { font-style: italic; color: var(--rose); }
+
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+.reveal.up { opacity: 1; transform: none; }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+.reveal-left.up { opacity: 1; transform: none; }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+.reveal-right.up { opacity: 1; transform: none; }
+
+.d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; }
+.d5 { transition-delay: .5s; } .d6 { transition-delay: .6s; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  nav { padding: 22px 32px; } nav.scrolled { padding: 16px 32px; }
+  .nav-links { display: none; }
+  section { padding: 80px 32px; } #hero { padding: 0 32px 60px; }
+  .about-grid, .services-layout, .impact-quotes-row, .brands-header, .proceso-intro, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  .about-portrait { height: 380px; } .portrait-badge { right: 0; bottom: 0; }
+  .impact-nums { grid-template-columns: repeat(3,1fr); }
+  .brands-grid { grid-template-columns: repeat(3,1fr); }
+  .steps { grid-template-columns: 1fr 1fr; } .services-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+  .vision-watermark { display: none; } .hero-stats { gap: 24px; }
+}
+</style>
 </head>
-<body class="tail-container bg-[#fffaf5] text-[#3f2a1e] overflow-x-hidden">
+<body>
 
-    <!-- NAVBAR -->
-    <nav id="nav" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#f5e8d3] transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <div class="w-10 h-10 bg-[#e07a5f] rounded-2xl flex items-center justify-center text-white font-bold text-3xl shadow-inner">IO</div>
-                <div class="text-3xl tracking-tighter">
-                    <span class="font-bold">SANTIAGO</span>
-                    <span class="font-light text-[#8c6f4f]">ORJUELA</span>
-                </div>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-10 text-lg font-medium">
-                <a href="#sobre" class="nav-link hover:text-[#e07a5f] transition-colors">Sobre mí</a>
-                <a href="#servicios" class="nav-link hover:text-[#e07a5f] transition-colors">Servicios</a>
-                <a href="#marcas" class="nav-link hover:text-[#e07a5f] transition-colors">Marcas</a>
-                <a href="#resultados" class="nav-link hover:text-[#e07a5f] transition-colors">Resultados</a>
-                <a href="#vision" class="nav-link hover:text-[#e07a5f] transition-colors">Visión</a>
-                <a href="#contacto" class="nav-link hover:text-[#e07a5f] transition-colors">Contacto</a>
-            </div>
-            
-            <a href="https://wa.me/573125456301" target="_blank" 
-               class="bg-[#e07a5f] hover:bg-[#c15e46] text-white transition-all px-8 py-4 rounded-3xl text-sm font-medium flex items-center gap-3 shadow-lg">
-                <i class="fab fa-whatsapp text-xl"></i>
-                WHATSAPP
-            </a>
-        </div>
-    </nav>
+<div class="cur-ring" id="curRing"></div>
+<div class="cur-dot" id="curDot"></div>
 
-    <!-- HERO -->
-    <section class="hero-bg min-h-screen flex items-center pt-24 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
-            <div class="md:col-span-7 space-y-10">
-                <div class="inline-flex items-center gap-3 bg-white/70 backdrop-blur px-6 py-3 rounded-3xl text-[#e07a5f] text-sm font-medium tracking-widest shadow">
-                    <div class="w-3 h-3 bg-[#e07a5f] rounded-full animate-pulse"></div>
-                    89% DE ÉXITO EN PROYECTOS
-                </div>
-                
-                <h1 class="text-7xl md:text-[5.8rem] leading-none font-bold tracking-tighter animate-in" style="animation-delay: 200ms">
-                    SANTIAGO<br>ORJUELA
-                </h1>
-                
-                <div class="text-4xl font-light text-[#8c6f4f] max-w-lg animate-in" style="animation-delay: 400ms">
-                    Incognitxx • Estratega High Ticket<br>
-                    Marketing Digital &amp; Creador de Contenido
-                </div>
-                
-                <p class="text-2xl max-w-md text-[#6b5a4a] animate-in" style="animation-delay: 600ms">
-                    Idea en 5 minutos → Propuesta completa, elegante y lista para crecer.
-                </p>
-                
-                <div class="flex flex-wrap gap-6 animate-in" style="animation-delay: 800ms">
-                    <a href="https://wa.me/573125456301" target="_blank"
-                       class="bg-[#3f2a1e] hover:bg-[#2a1c12] text-white px-10 py-6 rounded-3xl text-xl font-medium flex items-center gap-4 transition-all shadow-xl">
-                        <i class="fab fa-whatsapp text-2xl"></i>
-                        HABLEMOS AHORA
-                    </a>
-                    <a href="#resultados" class="border-2 border-[#e07a5f] hover:bg-[#e07a5f] hover:text-white px-10 py-6 rounded-3xl text-xl font-medium transition-all">Ver resultados →</a>
-                </div>
-                
-                <div class="flex items-center gap-12 pt-8 animate-in" style="animation-delay: 1000ms">
-                    <div>
-                        <div class="stat-number text-6xl font-bold text-[#e07a5f]" data-target="259">0</div>
-                        <div class="text-sm tracking-widest text-[#8c6f4f]">CRECIMIENTO ORGÁNICO EN 2 SEMANAS</div>
-                    </div>
-                    <div class="h-12 w-px bg-[#e07a5f]/30"></div>
-                    <div>
-                        <div class="stat-number text-6xl font-bold text-[#e07a5f]" data-target="26">0</div>
-                        <div class="text-sm tracking-widest text-[#8c6f4f]">CLIENTES QUE VUELVEN</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Foto perfil elegante -->
-            <div class="md:col-span-5 relative flex justify-center">
-                <div class="w-96 h-96 bg-white rounded-[4rem] shadow-2xl overflow-hidden rotate-6 transition-transform hover:rotate-0">
-                    <img src="https://picsum.photos/id/1005/800/800" 
-                         alt="Santiago Orjuela - Incognitxx" 
-                         class="w-full h-full object-cover">
-                </div>
-                <div class="absolute -bottom-6 -right-6 bg-white px-8 py-5 rounded-3xl shadow-xl text-center">
-                    <div class="text-[#e07a5f] text-xs tracking-[3px] font-medium">INCOGNITXX</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<nav id="nav">
+  <a href="#" class="nav-logo">Santiago <em>Orjuela</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">Acerca</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#impacto">Resultados</a></li>
+    <li><a href="#marcas">Marcas</a></li>
+    <li><a href="#vision">Visión</a></li>
+    <li><a href="https://wa.me/573125456301" target="_blank" class="nav-cta">Conversemos →</a></li>
+  </ul>
+</nav>
 
-    <!-- SOBRE MÍ -->
-    <section id="sobre" class="section py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-16 items-center">
-                <div class="md:col-span-5">
-                    <img src="https://picsum.photos/id/1015/800/900" 
-                         alt="Santiago Orjuela" 
-                         class="w-full rounded-3xl shadow-2xl">
-                </div>
-                
-                <div class="md:col-span-7 space-y-8">
-                    <div class="text-[#e07a5f] text-sm font-medium tracking-widest">LA INCÓGNITA RESUELTA</div>
-                    
-                    <h2 class="text-6xl font-light leading-none">
-                        Hola, soy Santiago Orjuela.<br>
-                        <span class="text-[#8c6f4f]">Incognitxx • Estratega de alto impacto.</span>
-                    </h2>
-                    
-                    <div class="text-2xl text-[#6b5a4a] max-w-2xl">
-                        89% de éxito con marcas como Pony Malta, Postobón, ETB, Yupi, Ramo y Corferias. 
-                        Manejo Meta Ads, Google Ads, TikTok, IA, diseño gráfico y respaldo legal de marca.
-                    </div>
-                    
-                    <div class="text-3xl italic text-[#3f2a1e]">
-                        “Las redes son una empresa. Si entiendes su mundo, ganan todos.”
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">SO</div>
+  <div class="hero-grain"></div>
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-blob blob3"></div>
+  <p class="hero-tag">Estrategia Digital · High Ticket · Colombia</p>
+  <h1 class="hero-title">
+    <span class="heavy">SANTIAGO</span><br>
+    <span class="italic">Orjuela</span>
+    <span class="small">Marketing Digital &amp; Estrategia High Ticket</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">Experto en Marketing Digital, Meta Ads, Inteligencia Artificial, Diseño Gráfico y Legislación de Marca. En 5 minutos tienes una propuesta digital lista para escalar.</p>
+    <div class="hero-actions">
+      <a href="#servicios" class="btn-serif">Ver servicios</a>
+      <a href="https://wa.me/573125456301" target="_blank" class="btn-pill">Escribir ahora ↗</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-num">89<sup>%</sup></div>
+      <div class="hstat-label">Tasa de acierto</div>
+    </div>
+    <div class="hstat-div"></div>
+    <div class="hstat">
+      <div class="hstat-num">259<sup>%</sup></div>
+      <div class="hstat-label">Crecimiento orgánico</div>
+    </div>
+    <div class="hstat-div"></div>
+    <div class="hstat">
+      <div class="hstat-num">26<sup>%</sup></div>
+      <div class="hstat-label">Retención de clientes</div>
+    </div>
+    <div class="hstat-div"></div>
+    <div class="hstat">
+      <div class="hstat-num">90<sup>M</sup></div>
+      <div class="hstat-label">Reproducciones / mes</div>
+    </div>
+  </div>
+</section>
 
-    <!-- SERVICIOS -->
-    <section id="servicios" class="section py-28 bg-[#fffaf5]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <span class="px-8 py-3 bg-white text-[#e07a5f] rounded-3xl text-sm font-medium">TODO EL FUNNEL CON ELEGANCIA</span>
-                <h2 class="text-6xl mt-6">Servicios que transforman</h2>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card-hover bg-white p-12 rounded-3xl border border-[#f5e8d3]">
-                    <div class="text-5xl mb-8">📈</div>
-                    <h3 class="text-4xl font-light">Meta • Google • TikTok Ads</h3>
-                    <p class="mt-6 text-xl text-[#6b5a4a]">Investigación profunda + campañas de alto retorno. Promedio 26% de clientes recurrentes.</p>
-                    <div class="mt-10 text-[#e07a5f] text-sm font-medium">+259% crecimiento orgánico en 2 semanas</div>
-                </div>
-                
-                <div class="card-hover bg-white p-12 rounded-3xl border border-[#f5e8d3]">
-                    <div class="text-5xl mb-8">🌐</div>
-                    <h3 class="text-4xl font-light">Páginas Web + IA</h3>
-                    <p class="mt-6 text-xl text-[#6b5a4a]">Sitios elegantes, escalables y listos para convertir. Idea hoy, web mañana.</p>
-                </div>
-                
-                <div class="card-hover bg-white p-12 rounded-3xl border border-[#f5e8d3]">
-                    <div class="text-5xl mb-8">🔍</div>
-                    <h3 class="text-4xl font-light">Diseño Gráfico + Legislación de Marca</h3>
-                    <p class="mt-6 text-xl text-[#6b5a4a]">Identidad visual premium + respaldo legal completo. Tu marca protegida y lista para brillar.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Marketing Digital</span><span class="marquee-item">High Ticket</span>
+    <span class="marquee-item">Meta Ads</span><span class="marquee-item">TikTok Ads</span>
+    <span class="marquee-item">Google Ads</span><span class="marquee-item">Diseño Gráfico</span>
+    <span class="marquee-item">Inteligencia Artificial</span><span class="marquee-item">Páginas Web</span>
+    <span class="marquee-item">Legislación de Marca</span><span class="marquee-item">Generación de Clientes</span>
+    <span class="marquee-item">Marketing Digital</span><span class="marquee-item">High Ticket</span>
+    <span class="marquee-item">Meta Ads</span><span class="marquee-item">TikTok Ads</span>
+    <span class="marquee-item">Google Ads</span><span class="marquee-item">Diseño Gráfico</span>
+    <span class="marquee-item">Inteligencia Artificial</span><span class="marquee-item">Páginas Web</span>
+    <span class="marquee-item">Legislación de Marca</span><span class="marquee-item">Generación de Clientes</span>
+  </div>
+</div>
 
-    <!-- MARCAS -->
-    <section id="marcas" class="section py-28 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl">Marcas que ya crecieron conmigo</h2>
-            </div>
-            
-            <div class="logo-grid grid grid-cols-3 md:grid-cols-6 gap-12 items-center justify-items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Pony_Malta_logo.svg/800px-Pony_Malta_logo.svg.png" alt="Pony Malta" class="h-14">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Postob%C3%B3n_logo.svg/512px-Postob%C3%B3n_logo.svg.png" alt="Postobón" class="h-14">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ETB_Colombia_logo.svg/512px-ETB_Colombia_logo.svg.png" alt="ETB" class="h-14">
-                <img src="https://www.pngkey.com/png/full/u2y3q8t4a9w7i1a9_yupi-indo-jelly-gum-yupi-candy.png" alt="Yupi" class="h-14">
-                <img src="https://logos.fandom.com/wiki/File:Ramo_logo.png" alt="Ramo" class="h-14">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Logo_de_Corferias.svg" alt="Corferias" class="h-14">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Trident_logo.svg/512px-Trident_logo.svg.png" alt="Trident" class="h-14">
-                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=ALOHA" alt="Aloha" class="h-14">
-                <!-- Los restantes con placeholders elegantes -->
-                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=STREAM+RIDERS" alt="Stream Riders" class="h-14">
-                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=THE+WOW" alt="The Wow" class="h-14">
-                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=SOFA" alt="SOFA" class="h-14">
-                <img src="https://placehold.co/180x80/f5e8d3/3f2a1e?text=PULLMAN" alt="Pullman" class="h-14">
-            </div>
-        </div>
-    </section>
+<!-- ABOUT -->
+<section id="about">
+  <p class="sec-label reveal">Quién soy</p>
+  <h2 class="sec-title reveal d1">El estratega <em>detrás</em><br><strong>del resultado</strong></h2>
+  <div class="about-grid">
+    <div class="about-portrait reveal-left">
+      <div class="portrait-frame">
+        <svg class="portrait-svg" viewBox="0 0 280 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="figGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8c7b6b" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#8c7b6b" stop-opacity=".2"/>
+            </linearGradient>
+            <radialGradient id="glowFig" cx="50%" cy="30%" r="50%">
+              <stop offset="0%" stop-color="#d4a89a" stop-opacity=".25"/>
+              <stop offset="100%" stop-color="#d4a89a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="140" cy="160" rx="120" ry="100" fill="url(#glowFig)"/>
+          <path d="M 140 420 L 30 420 L 30 240 Q 32 200 60 178 L 88 158 Q 96 230 140 242 Q 184 230 192 158 L 220 178 Q 248 200 250 240 L 250 420 Z" fill="url(#figGrad)"/>
+          <rect x="120" y="116" width="40" height="46" rx="8" fill="#8c7b6b" opacity=".9"/>
+          <ellipse cx="140" cy="96" rx="52" ry="58" fill="#7a6a5a" opacity=".85"/>
+          <path d="M 88 74 Q 140 54 192 74 L 188 86 Q 140 66 92 86 Z" fill="#c4a090" opacity=".9"/>
+          <path d="M 92 82 Q 140 48 188 82 Q 188 64 166 55 Q 140 48 114 55 Q 92 64 92 82 Z" fill="#d4a89a" opacity=".9"/>
+          <circle cx="140" cy="52" r="5" fill="#e0b8aa"/>
+          <ellipse cx="128" cy="92" rx="7" ry="5" fill="#c9a89a" opacity=".4"/>
+          <ellipse cx="152" cy="92" rx="7" ry="5" fill="#c9a89a" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="portrait-deco"></div>
+      <div class="portrait-badge">
+        <div class="pb-num"><em>+5</em></div>
+        <div class="pb-label">Años de experiencia</div>
+      </div>
+    </div>
+    <div class="about-text reveal-right">
+      <p class="big-intro">Hola, soy Santiago — estratega digital, creador de contenido y fundador de <em>Incognitxx</em>.</p>
+      <p>Me especializo en construir ecosistemas digitales completos: desde la estrategia inicial hasta la ejecución de campañas y el diseño de identidad de marca.</p>
+      <p>Con un 89% de acierto en estrategias aplicadas, más de 90M de reproducciones mensuales en TikTok y presencia en Twitch con 76K seguidores, entiendo el ecosistema digital desde adentro.</p>
+      <p>Hemos trabajado con marcas en salud, educación, ventas, servicios, productos, eventos y mucho más — siempre con respaldo legal y visión de escalabilidad.</p>
+      <div class="skills-pills">
+        <span class="skill-pill">Meta Ads</span><span class="skill-pill">Google Ads</span>
+        <span class="skill-pill">TikTok Ads</span><span class="skill-pill">Diseño Gráfico</span>
+        <span class="skill-pill">Identidad Visual</span><span class="skill-pill">IA</span>
+        <span class="skill-pill">High Ticket</span><span class="skill-pill">Legislación de Marca</span>
+        <span class="skill-pill">Páginas Web</span><span class="skill-pill">Estrategia de Contenido</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- RESULTADOS -->
-    <section id="resultados" class="section py-28 bg-[#fffaf5]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-16">
-                <div class="md:col-span-5">
-                    <div class="sticky top-32">
-                        <span class="text-[#e07a5f] text-sm tracking-widest">RESULTADOS QUE INSPIRAN</span>
-                        <h2 class="text-6xl font-light mt-4">"Conocer es saber vender de la mejor manera a tu cliente"</h2>
-                    </div>
-                </div>
-                
-                <div class="md:col-span-7 space-y-12">
-                    <div class="flex gap-10 items-center bg-white p-10 rounded-3xl">
-                        <div class="stat-number text-7xl font-bold text-[#e07a5f]" data-target="89">0</div>
-                        <div class="text-3xl">Por ciento de acierto en proyectos</div>
-                    </div>
-                    <div class="flex gap-10 items-center bg-white p-10 rounded-3xl">
-                        <div class="stat-number text-7xl font-bold text-[#e07a5f]" data-target="259">0</div>
-                        <div class="text-3xl">% crecimiento orgánico</div>
-                    </div>
-                    <div class="flex gap-10 items-center bg-white p-10 rounded-3xl">
-                        <div class="stat-number text-7xl font-bold text-[#e07a5f]" data-target="26">0</div>
-                        <div class="text-3xl">% clientes recurrentes</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="services-layout">
+    <div class="services-left">
+      <p class="sec-label reveal">Lo que ofrezco</p>
+      <h2 class="sec-title reveal d1">Servicios<br><em>de alto</em><br><strong>impacto</strong></h2>
+      <p class="lead reveal d2">"Las redes son una empresa, si entiendes su mundo ganan todos."</p>
+      <a href="https://wa.me/573125456301" target="_blank" class="btn-serif reveal d3">Solicitar propuesta →</a>
+    </div>
+    <div class="services-grid reveal-right">
+      <div class="svc-card"><div class="svc-num">01</div><div class="svc-name">Estrategia<br>High Ticket</div><p class="svc-desc">Estructuro tu oferta para vender a alto valor. Funnel completo, propuesta única y sistema de cierre de ventas de élite.</p><span class="svc-arrow">→</span></div>
+      <div class="svc-card"><div class="svc-num">02</div><div class="svc-name">Meta Ads &amp;<br>Google Ads</div><p class="svc-desc">Investigación de mercado, segmentación precisa y campañas con 26% promedio de retención de clientes.</p><span class="svc-arrow">→</span></div>
+      <div class="svc-card"><div class="svc-num">03</div><div class="svc-name">Crecimiento<br>Orgánico</div><p class="svc-desc">259% de crecimiento en redes en 2 semanas. Estrategia de contenido que posiciona sin depender de pauta.</p><span class="svc-arrow">→</span></div>
+      <div class="svc-card"><div class="svc-num">04</div><div class="svc-name">Diseño Web<br>&amp; Gráfico</div><p class="svc-desc">Páginas web que convierten, identidad visual de marca y diseño gráfico que habla por tu negocio.</p><span class="svc-arrow">→</span></div>
+      <div class="svc-card"><div class="svc-num">05</div><div class="svc-name">Inteligencia<br>Artificial</div><p class="svc-desc">Implementación de IA en tu negocio. En 5 minutos tienes una propuesta digital, útil y escalable.</p><span class="svc-arrow">→</span></div>
+      <div class="svc-card"><div class="svc-num">06</div><div class="svc-name">Legislación<br>de Marca</div><p class="svc-desc">Respaldo legal guiado para cualquier idea. Registro de marca y asesoría para estructurar tu negocio.</p><span class="svc-arrow">→</span></div>
+    </div>
+  </div>
+</section>
 
-    <!-- VISIÓN -->
-    <section id="vision" class="section py-28 bg-white text-center">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="inline-block px-8 py-3 bg-[#f5e8d3] text-[#e07a5f] rounded-3xl mb-8 text-sm font-medium">MI VISIÓN 2026</div>
-            <h2 class="text-6xl font-light leading-tight">Crear la agencia + academia de marketing digital más elegante y poderosa de Latinoamérica</h2>
-            <p class="mt-12 text-2xl text-[#6b5a4a]">Una comunidad donde la creatividad se encuentra con estrategias ganadoras, IA y respaldo legal.</p>
-        </div>
-    </section>
+<!-- IMPACTO -->
+<section id="impacto">
+  <p class="sec-label reveal">Números reales</p>
+  <h2 class="sec-title reveal d1">Resultados<br><em>que no</em><br><strong>se inventan</strong></h2>
+  <blockquote class="impact-hero-quote reveal d2">
+    "Conocer es saber vender de la mejor manera a tu cliente." — Con investigación de mercado para <em>Meta Ads, Google Ads y TikTok Ads</em> con un promedio del 26% de clientes que vuelven.
+  </blockquote>
+  <div class="impact-nums reveal">
+    <div class="in-card"><div class="in-big">89%</div><div class="in-label">Tasa de acierto</div><div class="in-sub">En estrategias</div></div>
+    <div class="in-card"><div class="in-big">259%</div><div class="in-label">Crecimiento orgánico</div><div class="in-sub">En 2 semanas</div></div>
+    <div class="in-card"><div class="in-big">26%</div><div class="in-label">Retención</div><div class="in-sub">Promedio Ads</div></div>
+    <div class="in-card"><div class="in-big">90M</div><div class="in-label">Reproducciones</div><div class="in-sub">TikTok / mes</div></div>
+    <div class="in-card"><div class="in-big">77K</div><div class="in-label">Reprod. Twitch</div><div class="in-sub">Al mes</div></div>
+    <div class="in-card"><div class="in-big">220K</div><div class="in-label">Seguidores TikTok</div><div class="in-sub">Comunidad activa</div></div>
+  </div>
+  <div class="impact-quotes-row">
+    <div class="iq-card reveal d1">
+      <p class="iq-quote">"Las redes son una empresa, si entiendes su mundo ganan todos."</p>
+      <div class="iq-stat">+259%</div>
+      <div class="iq-stat-label">Crecimiento orgánico en 2 semanas</div>
+    </div>
+    <div class="iq-card reveal d3">
+      <p class="iq-quote">"En 5 minutos ya tienes una propuesta digital, útil y fácil de escalar."</p>
+      <div class="iq-stat">89%</div>
+      <div class="iq-stat-label">Tasa de acierto con marcas líderes</div>
+    </div>
+  </div>
+</section>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="section py-28 bg-[#fffaf5]">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20">
-            <div>
-                <h2 class="text-6xl font-light">Listo para hacer crecer tu marca con elegancia</h2>
-                <p class="mt-8 text-2xl text-[#6b5a4a]">Una idea, un mensaje y en minutos tienes una propuesta premium.</p>
-                
-                <div class="mt-16 space-y-10">
-                    <div class="flex gap-6 items-center">
-                        <i class="fab fa-whatsapp text-5xl text-[#e07a5f]"></i>
-                        <div>
-                            <div class="font-medium text-xl">WhatsApp directo</div>
-                            <a href="https://wa.me/573125456301" class="text-4xl text-[#e07a5f]">+57 312 545 6301</a>
-                        </div>
-                    </div>
-                    <div class="flex gap-6 items-center">
-                        <i class="fas fa-envelope text-5xl text-[#e07a5f]"></i>
-                        <div>
-                            <div class="font-medium text-xl">Correo</div>
-                            <a href="mailto:incognitxxworkshop@gmail.com" class="text-2xl">incognitxxworkshop@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-white p-12 rounded-3xl shadow-inner">
-                <form action="https://formsubmit.co/incognitxxworkshop@gmail.com" method="POST" class="space-y-8">
-                    <input type="text" name="nombre" placeholder="Tu nombre" class="w-full border-b border-[#e07a5f]/30 focus:border-[#e07a5f] py-6 text-2xl outline-none bg-transparent">
-                    <input type="email" name="email" placeholder="Tu correo" class="w-full border-b border-[#e07a5f]/30 focus:border-[#e07a5f] py-6 text-2xl outline-none bg-transparent">
-                    <textarea name="mensaje" rows="4" placeholder="¿Qué idea quieres convertir en realidad?" class="w-full border-b border-[#e07a5f]/30 focus:border-[#e07a5f] py-6 text-2xl outline-none bg-transparent resize-none"></textarea>
-                    <button type="submit" class="w-full bg-[#3f2a1e] hover:bg-[#2a1c12] text-white py-7 rounded-3xl text-xl font-medium transition-all">ENVIAR PROPUESTA</button>
-                </form>
-            </div>
-        </div>
-    </section>
+<!-- MARCAS -->
+<section id="marcas">
+  <div class="brands-header">
+    <div>
+      <p class="sec-label reveal">Portafolio</p>
+      <h2 class="sec-title reveal d1">Marcas que<br><em>han confiado</em><br><strong>en el proceso</strong></h2>
+    </div>
+    <div>
+      <p class="brands-desc reveal d2">La colaboración de la comunidad ha sido fundamental para establecer asociaciones con marcas de gran relevancia en Colombia y Latinoamérica.</p>
+      <div class="brands-sectors reveal d3">
+        <span class="stag">Salud</span><span class="stag">Educación</span><span class="stag">Ventas</span>
+        <span class="stag">Servicios</span><span class="stag">Productos</span><span class="stag">Eventos</span>
+        <span class="stag">Tecnología</span><span class="stag">Entretenimiento</span>
+      </div>
+    </div>
+  </div>
+  <div class="brands-grid reveal">
+    <div class="brand-cell"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Postobon.svg/320px-Postobon.svg.png" alt="Postobón" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="brand-txt" style="display:none">POSTOBÓN</div></div>
+    <div class="brand-cell"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Ramo_logo.svg/320px-Ramo_logo.svg.png" alt="Ramo" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="brand-txt" style="display:none">RAMO</div></div>
+    <div class="brand-cell"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/ETB_logo.svg/320px-ETB_logo.svg.png" alt="ETB" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="brand-txt" style="display:none">ETB</div></div>
+    <div class="brand-cell"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Trident_gum_logo.svg/320px-Trident_gum_logo.svg.png" alt="Trident" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="brand-txt" style="display:none">TRIDENT</div></div>
+    <div class="brand-cell"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Pony_Malta.svg/200px-Pony_Malta.svg.png" alt="Pony Malta" onerror="this.style.display='none';this.nextSibling.style.display='flex'"><div class="brand-txt" style="display:none">PONY MALTA</div></div>
+    <div class="brand-cell"><div class="brand-txt">YUPI</div></div>
+    <div class="brand-cell"><div class="brand-txt">PULLMAN</div></div>
+    <div class="brand-cell"><div class="brand-txt">THE WAVE</div></div>
+    <div class="brand-cell"><div class="brand-txt">SUPER RICAS</div></div>
+    <div class="brand-cell"><div class="brand-txt">CORFERIAS</div></div>
+    <div class="brand-cell"><div class="brand-txt">ALOHA</div></div>
+    <div class="brand-cell"><div class="brand-txt">STREAM<br>FIGHTERS</div></div>
+    <div class="brand-cell"><div class="brand-txt">SOFA</div></div>
+    <div class="brand-cell" style="background:var(--blush)"><div class="brand-txt" style="color:var(--rose);font-size:1.2rem;font-style:italic;font-family:var(--serif)">Incognitxx</div></div>
+    <div class="brand-cell"><div class="brand-txt" style="font-size:.7rem;letter-spacing:3px">+ MUCHOS MÁS</div></div>
+  </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#3f2a1e] text-[#f5e8d3] py-20">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="flex justify-center items-center gap-4 mb-8">
-                <div class="w-9 h-9 bg-[#e07a5f] rounded-2xl flex items-center justify-center text-white text-3xl">IO</div>
-                <span class="text-3xl font-light">SANTIAGO ORJUELA • INCOGNITXX</span>
-            </div>
-            <div class="text-sm">© 2026 Bogotá, Colombia • Todos los derechos reservados</div>
-        </div>
-    </footer>
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="proceso-intro">
+    <div>
+      <p class="sec-label reveal">Metodología</p>
+      <h2 class="sec-title reveal d1">El proceso<br><em>en cuatro</em><br><strong>pasos</strong></h2>
+    </div>
+    <p class="proceso-lead reveal d2">"¿Quieres crecer y aprender cómo aprovechar la actualidad del marketing a tu beneficio? Así es como trabajamos juntos."</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal d1"><div class="step-line"></div><div class="step-n">01</div><div class="step-title">Diagnóstico</div><p class="step-body">Análisis de tu marca, mercado y competencia. Investigación para Meta Ads, Google Ads y TikTok Ads.</p><div class="step-time">⏱ Día 1</div></div>
+    <div class="step reveal d2"><div class="step-line"></div><div class="step-n">02</div><div class="step-title">Propuesta</div><p class="step-body">En 5 minutos tienes una propuesta digital, útil y fácil de escalar. Estrategia clara, objetivos medibles.</p><div class="step-time">⏱ Día 1–2</div></div>
+    <div class="step reveal d3"><div class="step-line"></div><div class="step-n">03</div><div class="step-title">Ejecución</div><p class="step-body">Implementación con las estrategias más ganadoras. IA, diseño, pauta y contenido integrados.</p><div class="step-time">⏱ Semana 1–2</div></div>
+    <div class="step reveal d4"><div class="step-line"></div><div class="step-n">04</div><div class="step-title">Escala</div><p class="step-body">Optimización continua. 259% de crecimiento. Tu inversión se multiplica, las métricas lo prueban.</p><div class="step-time">⏱ Semana 2+</div></div>
+  </div>
+</section>
 
-    <script>
-        // Tailwind
-        tailwind.config = {
-            content: [],
-            theme: { extend: {} }
-        }
+<!-- VISION -->
+<section id="vision">
+  <div class="vision-watermark">VISIÓN</div>
+  <div class="vision-inner">
+    <p class="sec-label reveal">Hacia el futuro</p>
+    <h2 class="sec-title reveal d1">Una <em>agencia,</em><br><strong>una academia</strong></h2>
+    <p class="vision-quote reveal d2">"Quiero hacer una <em>agencia de marketing digital</em> y academia para aquellos que quieran explotar sus capacidades creativas con las estrategias más ganadoras."</p>
+    <p class="vision-body reveal d3">No solo trabajamos para marcas — construimos ecosistemas digitales completos. Si quieres crecer y aprender cómo aprovechar la actualidad del marketing a tu beneficio, la puerta está abierta.</p>
+    <div class="reveal d4"><a href="https://wa.me/573125456301" target="_blank" class="btn-pill">Quiero ser parte ↗</a></div>
+  </div>
+</section>
 
-        // Navbar scroll
-        window.addEventListener('scroll', () => {
-            document.getElementById('nav').classList.toggle('nav-scrolled', window.scrollY > 80);
-        });
+<!-- CONTACTO -->
+<section id="contacto">
+  <p class="sec-label reveal">¿Hablamos?</p>
+  <h2 class="sec-title reveal d1">Sin rodeos,<br><em>con resultados</em></h2>
+  <div class="contact-layout">
+    <div class="contact-left reveal-left">
+      <div class="headline">ESCRIBE<br><em>ahora</em><br><strong>mismo.</strong></div>
+      <p>¿Tienes una idea? ¿Quieres escalar tu negocio? En 5 minutos sabrás exactamente qué hacer.</p>
+      <a href="https://wa.me/573125456301" target="_blank" class="btn-pill">WhatsApp directo ↗</a>
+      <div class="socials-row">
+        <a href="https://www.instagram.com/incognitxx" target="_blank" class="soc-btn" title="Instagram">📷</a>
+        <a href="https://www.twitch.tv/incognitxx" target="_blank" class="soc-btn" title="Twitch">🎮</a>
+        <a href="https://www.tiktok.com/@incognitxx" target="_blank" class="soc-btn" title="TikTok">🎵</a>
+        <a href="https://twitter.com/incognitxx" target="_blank" class="soc-btn" title="X">𝕏</a>
+      </div>
+    </div>
+    <div class="contact-cards reveal-right">
+      <a href="https://wa.me/573125456301" target="_blank" class="cc"><div class="cc-icon">💬</div><div class="cc-info"><span>WhatsApp</span><strong>+57 312 545 6301</strong></div></a>
+      <a href="mailto:incognitxxworkshop@gmail.com" class="cc"><div class="cc-icon">✉️</div><div class="cc-info"><span>Email</span><strong>incognitxxworkshop@gmail.com</strong></div></a>
+      <a href="https://www.tiktok.com/@incognitxx" target="_blank" class="cc"><div class="cc-icon">🎵</div><div class="cc-info"><span>TikTok</span><strong>@incognitxx · 220K</strong></div></a>
+      <a href="https://www.twitch.tv/incognitxx" target="_blank" class="cc"><div class="cc-icon">🎮</div><div class="cc-info"><span>Twitch</span><strong>@incognitxx · 76.2K</strong></div></a>
+      <a href="https://www.instagram.com/incognitxx" target="_blank" class="cc"><div class="cc-icon">📷</div><div class="cc-info"><span>Instagram</span><strong>@incognitxx · 2K</strong></div></a>
+    </div>
+  </div>
+</section>
 
-        // Reveal sections
-        function revealSections() {
-            document.querySelectorAll('.section').forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.85) {
-                    section.classList.add('visible');
-                }
-            });
-        }
-        window.addEventListener('scroll', revealSections);
-        window.addEventListener('load', revealSections);
+<footer>
+  <div class="footer-logo">Santiago <em>Orjuela</em></div>
+  <div>© 2025 · Marketing Digital · Colombia</div>
+  <div>by <span style="color:var(--rose)">Incognitxx</span></div>
+</footer>
 
-        // Counter animation
-        function animateCounters() {
-            document.querySelectorAll('.stat-number').forEach(el => {
-                const target = parseInt(el.getAttribute('data-target'));
-                let count = 0;
-                const increment = Math.ceil(target / 60);
-                const timer = setInterval(() => {
-                    count += increment;
-                    if (count >= target) {
-                        el.textContent = target + (target === 259 ? '%' : '');
-                        clearInterval(timer);
-                    } else {
-                        el.textContent = count;
-                    }
-                }, 30);
-            });
-        }
+<script>
+/* CURSOR */
+const ring = document.getElementById('curRing');
+const dot  = document.getElementById('curDot');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+});
+(function animCursor(){
+  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animCursor);
+})();
+document.querySelectorAll('a,button,.skill-pill,.stag,.svc-card,.step,.brand-cell,.cc').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='var(--taupe)';});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='var(--rose)';});
+});
 
-        // Trigger counters when results section is visible
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                animateCounters();
-                observer.disconnect();
-            }
-        }, { threshold: 0.5 });
+/* NAV */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
 
-        setTimeout(() => {
-            const resultsSection = document.getElementById('resultados');
-            if (resultsSection) observer.observe(resultsSection);
-        }, 1000);
+/* REVEAL */
+const revEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('up');io.unobserve(e.target);}});
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+revEls.forEach(el=>io.observe(el));
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+/* COUNTER */
+function counter(el,target,suf){
+  const dur=1800,start=performance.now();
+  (function tick(now){
+    const t=Math.min((now-start)/dur,1);
+    const ease=1-Math.pow(1-t,4);
+    el.textContent=Math.floor(target*ease)+suf;
+    if(t<1)requestAnimationFrame(tick);else el.textContent=target+suf;
+  })(performance.now());
+}
+const numIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target,txt=el.textContent;
+      const num=parseFloat(txt.replace(/[^0-9.]/g,''));
+      const suf=txt.replace(/[0-9.]/g,'');
+      if(!isNaN(num))counter(el,num,suf);
+      numIO.unobserve(el);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.in-big,.hstat-num').forEach(el=>numIO.observe(el));
+
+/* PARALLAX BLOBS */
+document.addEventListener('mousemove',e=>{
+  const xr=(e.clientX/window.innerWidth-.5)*20;
+  const yr=(e.clientY/window.innerHeight-.5)*20;
+  document.querySelectorAll('.hero-blob').forEach((b,i)=>{
+    const f=(i+1)*.3;
+    b.style.transform=`translate(${xr*f}px,${yr*f}px)`;
+  });
+});
+</script>
 </body>
 </html>
